@@ -1,4 +1,5 @@
 import QtQuick
+import QtQuick.Shapes
 import "../../../Core"
 
 Item {
@@ -10,24 +11,40 @@ Item {
     property string text: Qt.formatTime(new Date(), "hh:mm")
 
     Rectangle {
-        anchors.topMargin: 10
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.top: parent.top
-        width: 500
+        width: 300
         height: 50
         radius: Theme.componentRadius
-        color: Theme.background
-        Rectangle {
-            anchors.centerIn: parent
-            color: Theme.subComponents
-            width: parent.width / 4
-            height: parent.height - parent.height / 4
-            radius: Theme.componentRadiusSmall
+        color: "transparent"
+        Shape {
+            preferredRendererType: Shape.CurveRenderer
+            scale: 1.5
+            anchors.horizontalCenter: parent.horizontalCenter
+            ShapePath {
+                strokeWidth: 2
+                fillColor: Theme.background
+                strokeColor: Theme.background
+
+                PathSvg {
+                    path: "M121.074 0.5L242.074 0.500008C242.074 0.500008 222.074 3.49998 222.074 20.5C222.074 20.5 222.074 39.5 206.574 37.4999H121.074"
+                }
+            }
+
+            ShapePath {
+                strokeWidth: 2
+                fillColor: Theme.background
+                strokeColor: Theme.background
+
+                PathSvg {
+                    path: "M121.074 0.5L0.0743408 0.500008C0.0743408 0.500008 20.0743 3.49998 20.0743 20.5C20.0743 20.5 20.0743 39.5 35.5743 37.4999H121.074"
+                }
+            }
             Text {
                 anchors.centerIn: parent
                 text: root.text
                 color: Theme.text
-                font.pixelSize: 28
+                font.pixelSize: 24
                 font.family: "Nunito"
             }
         }
