@@ -17,6 +17,7 @@ PanelWindow {
     property color background: "#0f0d12"
     property int componentRadius: 20
     WlrLayershell.layer: WlrLayer.Top
+    BarLine {}
     BarLeft {
         scaleFactor: root.scaleFactor
     }
