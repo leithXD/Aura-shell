@@ -1,18 +1,16 @@
 import Quickshell
 import QtQuick
-import QtQuick.Shapes
 import "../../../Core"
 
 Item {
-    id: root
     SystemClock {
         id: clock
-        precision: SystemClock.Minutes
+        precision: SystemClock.date
     }
 
     Text {
         anchors.centerIn: parent
-        text: Qt.formatDateTime(clock.date, "hh:mm")
+        text: Qt.formatDateTime(clock.date, "ddd, dd. MMM")
         color: Colors.md3.on_surface
         font.pixelSize: 14
         font.family: "Nunito"
