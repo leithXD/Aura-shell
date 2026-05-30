@@ -17,14 +17,17 @@ PanelWindow {
     property color background: "#0f0d12"
     property int componentRadius: 20
     WlrLayershell.layer: WlrLayer.Top
-    BarLine {}
-    BarLeft {
-        scaleFactor: root.scaleFactor
-    }
-    BarRight {
-        scaleFactor: root.scaleFactor
-    }
-    BarMiddle {
-        scaleFactor: root.scaleFactor
+    
+    Rectangle{
+        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        width: 1900
+        height: 45
+        radius: Theme.componentRadius
+        color: Colors.md3.background
+        Clock{
+            anchors.centerIn: parent
+        }
     }
 }
