@@ -87,7 +87,7 @@ PanelWindow {
                 anchors.right: parent.right
                 anchors.rightMargin: 350
                 width: 85
-                height: 38
+                height: 45
                 visible: Config.visibility.weather
             }
         }

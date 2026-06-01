@@ -12,23 +12,6 @@ Item {
         radius: Theme.componentRadius / 1.4
         color: Theme.transparency(Colors.md3.surface_container, 0.5)
 
-        Rectangle {
-            anchors.verticalCenter: parent.verticalCenter
-            width: 23
-            height: 23
-            color: Colors.md3.primary
-            radius: Theme.componentRadiusSmall
-            property int displayIndex: ((Hyprland.focusedWorkspace?.id ?? 1) - 1) % 5
-            property int displacement: 13 + displayIndex * 30
-            x: displacement
-            Behavior on x {
-                NumberAnimation {
-                    duration: 100
-                    easing: Easing.InCurve
-                }
-            }
-        } // 13,43, 73, 103, 133
-
         RowLayout {
             id: row
             anchors.centerIn: parent
@@ -48,7 +31,7 @@ Item {
                     width: 15
                     height: 15
                     radius: 16
-                    color: isActive ? Colors.md3.primary : isOccupied ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low
+                    color: isOccupied ? Colors.md3.surface_container_highest : Colors.md3.surface_container_low
                     Behavior on color {
                         ColorAnimation {
                             duration: 100
@@ -62,6 +45,23 @@ Item {
                 }
             }
         }
+
+        Rectangle {
+            anchors.verticalCenter: parent.verticalCenter
+            width: 23
+            height: 23
+            color: Colors.md3.primary
+            radius: Theme.componentRadiusSmall
+            property int displayIndex: ((Hyprland.focusedWorkspace?.id ?? 1) - 1) % 5
+            property int displacement: 13 + displayIndex * 30
+            x: displacement
+            Behavior on x {
+                NumberAnimation {
+                    duration: 100
+                    easing: Easing.InCurve
+                }
+            }
+        } // 13,43, 73, 103, 133
 
         MouseArea {
             anchors.fill: parent

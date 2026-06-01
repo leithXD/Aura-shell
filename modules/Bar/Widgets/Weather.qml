@@ -48,7 +48,6 @@ Item {
         command: ["curl", "https://api.open-meteo.com/v1/forecast?latitude=51.2562&longitude=7.1508&current=temperature_2m,weather_code&forecast_days=1"]
         stdout: StdioCollector {
             onStreamFinished: {
-                console.log(State.onBattery);
                 const json = JSON.parse(this.text);
                 degrees.text = Math.round(json.current.temperature_2m) + " °C";
                 weatherIcon.value = mapWeather(json.current.weather_code);
