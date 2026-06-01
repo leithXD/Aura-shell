@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Wayland
 import Quickshell.Io
 import QtQuick
 import qs.Core
@@ -6,17 +7,33 @@ import qs.Core
 PanelWindow {
     id: root
     visible: false
-    anchors {
-        right: true
-        left: true
-        top: true
-        bottom: true
+    implicitHeight: 1200
+    implicitWidth: 1920
+    color: Theme.transparency(Colors.md3.surface, transparencyValue)
+    property bool isVisible: false
+    property real transparencyValue: 0
+    WlrLayershell.namespace: "Lock"
+
+    Behavior on transparencyValue {
+        NumberAnimation {
+            duration: 400
+            easing: Easing.OutCubic
+        }
     }
-    color: Theme.transparency(Colors.md3.primary, 0.1)
+
+    onIsVisibleChanged: {
+        visible = isVisible;
+        if (isVisible) {
+            transparencyValue = 0.8;
+        } else {
+            transparencyValue = 0;
+        }
+    }
+
     IpcHandler {
         target: "lock"
-        function lock(enabled) {
-            root.visible = enabled;
+        function toggle() {
+            root.isVisible = !root.isVisible;
         }
     }
 }

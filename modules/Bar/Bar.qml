@@ -1,4 +1,5 @@
 import Quickshell
+import Quickshell.Io
 import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
@@ -15,6 +16,7 @@ PanelWindow {
     implicitHeight: 80
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
+    WlrLayershell.namespace: "Bar"
 
     Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
@@ -68,6 +70,17 @@ PanelWindow {
                 anchors.rightMargin: 15
                 width: 30
                 height: 30
+                MouseArea {
+                    anchors.fill: parent
+                    onClicked: {
+                        nextWall.running = true;
+                    }
+                    Process {
+                        id: nextWall
+                        command: ["sh", "-c", "nextWall"]
+                        running: false
+                    }
+                }
             }
             Weather {
                 anchors.verticalCenter: parent.verticalCenter
