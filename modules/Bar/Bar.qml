@@ -3,7 +3,7 @@ import Quickshell.Wayland
 import QtQuick
 import QtQuick.Layouts
 import "Widgets"
-import "../../Core"
+import qs.Core
 
 PanelWindow {
     id: root
@@ -16,7 +16,7 @@ PanelWindow {
     color: "transparent"
     WlrLayershell.layer: WlrLayer.Top
 
-    Rectangle{
+    Rectangle {
         anchors.horizontalCenter: parent.horizontalCenter
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
@@ -25,43 +25,57 @@ PanelWindow {
         radius: Theme.componentRadius
         color: Theme.transparency(Colors.md3.background, 0.8)
 
-        Item{
+        Item {
             id: leftGroup
             height: parent.height
             width: 500
+
+            Item {
+                anchors.left: parent.left
+                anchors.verticalCenter: parent.verticalCenter
+                anchors.leftMargin: 7
+                width: 170
+                height: 50
+                Workspaces {}
+            }
+
             RowLayout {
                 anchors.verticalCenter: parent.verticalCenter
                 spacing: 80
                 Layout.alignment: Qt.AlignHCenter
-                Item{width: 150}
+                Item {
+                    width: 150
+                    height: 60
+                }
                 Date {}
-                Clock{}
+                Clock {}
             }
         }
-        Item{
+        Item {
             id: middleGroup
             anchors.centerIn: parent
             height: parent.height
             width: 700
         }
-        Item{
+        Item {
             id: rightGroup
             anchors.right: parent.right
             height: parent.height
             width: 500
-            Logo{
+            Logo {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 15
                 width: 30
                 height: 30
             }
-            Weather{
+            Weather {
                 anchors.verticalCenter: parent.verticalCenter
                 anchors.right: parent.right
                 anchors.rightMargin: 350
                 width: 85
                 height: 38
+                visible: Config.visibility.weather
             }
         }
     }

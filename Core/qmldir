@@ -1,0 +1,5 @@
+module qs.Core
+singleton Theme 1.0 Theme.qml
+singleton Config 1.0 Config.qml
+singleton State 1.0 State.qml
+singleton Colors 1.0 Colors.qml

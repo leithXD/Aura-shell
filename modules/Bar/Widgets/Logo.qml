@@ -1,7 +1,7 @@
 import Quickshell
 import QtQuick
 import QtQuick.Effects
-import "../../../Core"
+import qs.Core
 
 Item {
     Image {
