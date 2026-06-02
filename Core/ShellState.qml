@@ -3,5 +3,5 @@ import Quickshell
 import QtQuick
 
 Singleton {
-    property bool nothing: true
+    property bool locked: false
 }

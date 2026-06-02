@@ -1,0 +1,65 @@
+#!/usr/bin/env bash
+
+set -e
+
+# HARDKODIERTER PFAD
+DIR="${XDG_PICTURES_DIR:-$HOME/Pictures}/Wallpapers"
+STATE_FILE="$DIR/state.txt"
+
+# Bilder sammeln
+mapfile -t WALLPAPERS < <(
+  find "$DIR" -maxdepth 1 -type f \
+  \( -iname "*.jpg" -o -iname "*.png" -o -iname "*.jpeg" -o -iname "*.webp" \) \
+  | sort
+)
+
+if [ ${#WALLPAPERS[@]} -eq 0 ]; then
+  echo "Keine Wallpapers gefunden."
+  exit 1
+fi
+
+get_next() {
+  local current="$1"
+
+  for i in "${!WALLPAPERS[@]}"; do
+    if [[ "${WALLPAPERS[$i]}" == "$current" ]]; then
+      echo "${WALLPAPERS[$(( (i + 1) % ${#WALLPAPERS[@]} ))]}"
+      return
+    fi
+  done
+
+  echo "${WALLPAPERS[0]}"
+}
+
+# zufällige Transitionen
+TRANSITIONS=("center" "left" "right" "top" "bottom" "outer" "wipe" "fade")
+
+random_transition() {
+  echo "${TRANSITIONS[$RANDOM % ${#TRANSITIONS[@]}]}"
+}
+
+random_duration() {
+  awk -v min=0.7 -v max=1 'BEGIN {
+    srand();
+    print min + rand() * (max - min)
+  }'
+}
+
+if [ -f "$STATE_FILE" ]; then
+  CURRENT="$(cat "$STATE_FILE")"
+  NEXT="$(get_next "$CURRENT")"
+else
+  NEXT="${WALLPAPERS[0]}"
+fi
+
+echo "$NEXT" > "$STATE_FILE"
+
+TRANSITION="$(random_transition)"
+DURATION="$(random_duration)"
+
+# Wallpaper setzen
+awww img "$NEXT" \
+  --transition-type "$TRANSITION" \
+  --transition-duration "$DURATION"
+
+matugen image "$NEXT" --source-color-index 0

@@ -6,6 +6,7 @@ import Quickshell.Io
 
 Singleton {
     property alias visibility: jsonAdapter.visibility
+    property alias transparency: jsonAdapter.transparency
 
     FileView {
         path: Quickshell.env("HOME") + "/.config/Aura/shell.json"
@@ -16,6 +17,7 @@ Singleton {
             id: jsonAdapter
 
             readonly property Visibility visibility: Visibility {}
+            readonly property Transparency transparency: Transparency {}
             // Du kannst dir hier mehr rein machen einfach dann auch die komponenten auch erstsellen
         }
     }
@@ -26,5 +28,10 @@ Singleton {
         property bool time: true
         property bool date: true
         property bool logo: true
+    }
+
+    component Transparency: JsonObject {
+        property real surface: 1
+        property real surfaceLayer: 1
     }
 }

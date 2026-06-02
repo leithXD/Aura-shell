@@ -25,7 +25,7 @@ PanelWindow {
         width: 1900
         height: 60
         radius: Theme.componentRadius
-        color: Theme.transparency(Colors.md3.background, 0.8)
+        color: Theme.transparency(Colors.md3.background, Config.transparency.surface)
 
         Item {
             id: leftGroup
@@ -64,31 +64,41 @@ PanelWindow {
             anchors.right: parent.right
             height: parent.height
             width: 500
-            Logo {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.right: parent.right
-                anchors.rightMargin: 15
-                width: 30
-                height: 30
-                MouseArea {
-                    anchors.fill: parent
-                    onClicked: {
-                        nextWall.running = true;
-                    }
-                    Process {
-                        id: nextWall
-                        command: ["sh", "-c", "nextWall"]
-                        running: false
-                    }
+            RowLayout {
+                anchors.fill: parent
+                spacing: 0
+                Item {
+                    // spacer
+                    width: 150
                 }
-            }
-            Weather {
-                anchors.verticalCenter: parent.verticalCenter
-                anchors.right: parent.right
-                anchors.rightMargin: 350
-                width: 85
-                height: 45
-                visible: Config.visibility.weather
+                Weather {
+                    Layout.preferredWidth: 85
+                    Layout.preferredHeight: 45
+                    visible: Config.visibility.weather
+                }
+
+                WidgetButton {
+                    Layout.preferredWidth: 85
+                    Layout.preferredHeight: 45
+                    command: "top -bn1 | grep 'Cpu(s)' | awk '{printf \"%d%%\\n\", 100 - $8}'"
+                    iconName: "\ue322"
+                }
+
+                WidgetButton {
+                    Layout.preferredWidth: 85
+                    Layout.preferredHeight: 45
+                    command: "free | awk '/Mem:/ {printf \"%d%%\\n\", $3/$2 * 100}'"
+                    iconName: "\uf7a3"
+                }
+
+                Logo {
+                    Layout.preferredWidth: 30
+                    Layout.preferredHeight: 30
+                }
+                Item {
+                    // spacer
+                    width: 15
+                }
             }
         }
     }

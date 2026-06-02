@@ -10,7 +10,7 @@ Item {
         width: parent.width
         height: parent.height
         radius: Theme.componentRadius / 1.4
-        color: Theme.transparency(Colors.md3.surface_container, 0.5)
+        color: Theme.transparency(Colors.md3.surface_container, Config.transparency.surfaceLayer)
 
         RowLayout {
             id: row

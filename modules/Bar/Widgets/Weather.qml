@@ -51,6 +51,7 @@ Item {
                 const json = JSON.parse(this.text);
                 degrees.text = Math.round(json.current.temperature_2m) + " °C";
                 weatherIcon.value = mapWeather(json.current.weather_code);
+                console.log(ShellState.nothing);
             }
         }
     }
