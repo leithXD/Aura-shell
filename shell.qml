@@ -9,9 +9,9 @@ import "services/Ipc"
 
 ShellRoot {
     Background {}
-    MiddlePellet {}
     Ipc {}
     Bar {}
+    MiddlePellet {}
     LockContext {
         id: lockContext
 
