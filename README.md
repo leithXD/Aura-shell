@@ -4,3 +4,5 @@ Dependenies
 Curl
 Top
 Free
+Matugen
+Quickshell
