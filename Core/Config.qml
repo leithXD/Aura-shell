@@ -10,7 +10,7 @@ Singleton {
     property alias internal: jsonAdapter.internal
 
     FileView {
-        path: Quickshell.env("HOME") + "/.config/Aura/shell.json"
+        path: Quickshell.env("HOME") + "/.config/nova/shell.json"
         watchChanges: true
         onFileChanged: reload()
 

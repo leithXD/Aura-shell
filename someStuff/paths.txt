@@ -1,2 +1,2 @@
-shell.json goes in to -> ~/.config/Aura/
-colors.json goes in to ~/.local/state/Aura/Theme/
+shell.json goes in to -> ~/.config/Nova/
+colors.json goes in to ~/.local/state/Nova/Theme/
