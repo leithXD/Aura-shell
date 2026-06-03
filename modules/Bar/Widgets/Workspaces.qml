@@ -67,9 +67,9 @@ Item {
             anchors.fill: parent
             onWheel: function (wheel) {
                 if (wheel.angleDelta.y > 0) {
-                    Quickshell.execDetached(["switchWs", "+"]);
-                } else {
                     Quickshell.execDetached(["switchWs", "-"]);
+                } else {
+                    Quickshell.execDetached(["switchWs", "+"]);
                 }
             }
         }

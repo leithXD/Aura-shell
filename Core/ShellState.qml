@@ -5,5 +5,5 @@ import QtQuick
 Singleton {
     property bool locked: false
     property string wallpaper: Config.internal.wallpaper
-    property bool dashOpened: false
+    property bool dashOpened: true
 }
