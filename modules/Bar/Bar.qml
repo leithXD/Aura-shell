@@ -19,10 +19,10 @@ PanelWindow {
     WlrLayershell.namespace: "Bar"
 
     Rectangle {
-        anchors.horizontalCenter: parent.horizontalCenter
+        anchors.left: parent.left
         anchors.bottom: parent.bottom
         anchors.bottomMargin: 4
-        width: 1900
+        width: 350
         height: 60
         radius: Theme.componentRadius
         color: Theme.transparency(Colors.md3.background, Config.transparency.surface)
@@ -53,12 +53,16 @@ PanelWindow {
                 Clock {}
             }
         }
-        Item {
-            id: middleGroup
-            anchors.centerIn: parent
-            height: parent.height
-            width: 700
-        }
+    }
+
+    Rectangle {
+        anchors.right: parent.right
+        anchors.bottom: parent.bottom
+        anchors.bottomMargin: 4
+        width: 350
+        height: 60
+        radius: Theme.componentRadius
+        color: Theme.transparency(Colors.md3.background, Config.transparency.surface)
         Item {
             id: rightGroup
             anchors.right: parent.right

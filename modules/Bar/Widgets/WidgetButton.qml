@@ -37,7 +37,6 @@ Item {
         stdout: StdioCollector {
             onStreamFinished: {
                 textField.text = this.text;
-                console.log(this.text);
             }
         }
     }
