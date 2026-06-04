@@ -24,7 +24,7 @@ Item {
     }
     Rectangle {
         anchors.fill: parent
-        radius: 10
+        radius: 10 * ShellState.scale
         color: Colors.md3.on_surface
         opacity: 0
         Behavior on opacity {

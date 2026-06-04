@@ -13,10 +13,10 @@ Item {
         id: icon
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 10
+        anchors.leftMargin: 10 * ShellState.scale
         text: root.iconName
         font.family: "Material Symbols Rounded"
-        font.pointSize: 16
+        font.pointSize: 16 * ShellState.scale
         color: Colors.md3.on_surface
     }
 
@@ -24,10 +24,10 @@ Item {
         id: textField
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 10
+        anchors.rightMargin: 10 * ShellState.scale
         text: ""
         font.family: "Cascadia Nove NF"
-        font.pointSize: 12
+        font.pointSize: 12 * ShellState.scale
         color: Colors.md3.on_surface
     }
     Process {
@@ -37,6 +37,7 @@ Item {
         stdout: StdioCollector {
             onStreamFinished: {
                 textField.text = this.text;
+                console.log(ShellState.scale);
             }
         }
     }
@@ -52,7 +53,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: 10
+        radius: 10 * ShellState.scale
         color: Colors.md3.on_surface
         opacity: 0
         Behavior on opacity {

@@ -14,7 +14,7 @@ Item {
         anchors.centerIn: parent
         text: Qt.formatDateTime(clock.date, "hh:mm")
         color: Colors.md3.on_surface
-        font.pixelSize: 32
+        font.pixelSize: 32 * ShellState.scale
         font.family: "Nunito"
     }
 }

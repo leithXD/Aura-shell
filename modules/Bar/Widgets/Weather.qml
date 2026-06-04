@@ -11,7 +11,7 @@ Item {
         id: icon
         anchors.left: parent.left
         anchors.verticalCenter: parent.verticalCenter
-        anchors.leftMargin: 10
+        anchors.leftMargin: 10 * ShellState.scale
         text: {
             if (weatherIcon === 0)
                 return "\ue81a";      // sunny
@@ -28,7 +28,7 @@ Item {
             return "\ue000";
         }
         font.family: "Material Symbols Rounded"
-        font.pointSize: 16
+        font.pointSize: 16 * ShellState.scale
         color: Colors.md3.on_surface
     }
 
@@ -36,10 +36,10 @@ Item {
         id: degrees
         anchors.right: parent.right
         anchors.verticalCenter: parent.verticalCenter
-        anchors.rightMargin: 10
+        anchors.rightMargin: 10 * ShellState.scale
         text: ""
         font.family: "Cascadia Nove NF"
-        font.pointSize: 12
+        font.pointSize: 12 * ShellState.scale
         color: Colors.md3.on_surface
     }
     Process {
@@ -51,7 +51,6 @@ Item {
                 const json = JSON.parse(this.text);
                 degrees.text = Math.round(json.current.temperature_2m) + " °C";
                 weatherIcon.value = mapWeather(json.current.weather_code);
-                console.log(ShellState.nothing);
             }
         }
     }
@@ -83,7 +82,7 @@ Item {
 
     Rectangle {
         anchors.fill: parent
-        radius: 10
+        radius: 10 * ShellState.scale
         color: Colors.md3.on_surface
         opacity: 0
         Behavior on opacity {

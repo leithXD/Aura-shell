@@ -5,6 +5,7 @@ import qs.Core
 
 Item {
     id: root
+    property int fontSize: 14
     SystemClock {
         id: clock
         precision: SystemClock.Minutes
@@ -14,7 +15,7 @@ Item {
         anchors.centerIn: parent
         text: Qt.formatDateTime(clock.date, "hh:mm")
         color: Colors.md3.on_surface
-        font.pixelSize: 14
+        font.pixelSize: fontSize
         font.family: "Nunito"
     }
 }

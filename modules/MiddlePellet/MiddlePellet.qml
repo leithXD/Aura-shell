@@ -15,18 +15,18 @@ Variants {
         property var modelData
         screen: modelData
         anchors.top: true
-        implicitWidth: 1000
-        implicitHeight: 600
+        implicitWidth: 1000 * ShellState.scale
+        implicitHeight: 600 * ShellState.scale
 
         Rectangle {
             id: dashRect
             property bool hovered: false
-            width: hovered ? 600 : 300
-            height: hovered ? 200 : 60
+            width: hovered ? 600 * ShellState.scale : 300 * ShellState.scale
+            height: hovered ? 200 * ShellState.scale : 60 * ShellState.scale
             anchors.horizontalCenter: parent.horizontalCenter
             anchors.top: parent.top
-            anchors.topMargin: 10
-            radius: Theme.componentRadius
+            anchors.topMargin: 10 * ShellState.scale
+            radius: Theme.componentRadius * ShellState.scale
             color: Theme.transparency(Colors.md3.surface, Config.transparency.surface)
             Behavior on width {
                 NumberAnimation {

@@ -15,7 +15,7 @@ Variants {
             right: true
             left: true
         }
-        implicitHeight: 80
+        implicitHeight: 80 * ShellState.scale
         color: "transparent"
         WlrLayershell.layer: WlrLayer.Top
         WlrLayershell.namespace: "Bar"
@@ -25,37 +25,41 @@ Variants {
         Rectangle {
             anchors.left: parent.left
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
-            anchors.leftMargin: 10
-            width: 350
-            height: 60
-            radius: Theme.componentRadius
+            anchors.bottomMargin: 4 * ShellState.scale
+            anchors.leftMargin: 10 * ShellState.scale
+            width: 350 * ShellState.scale
+            height: 60 * ShellState.scale
+            radius: Theme.componentRadius * ShellState.scale
             color: Theme.transparency(Colors.md3.background, Config.transparency.surface)
 
             Item {
                 id: leftGroup
                 height: parent.height
-                width: 500
+                width: 500 * ShellState.scale
 
                 Item {
                     anchors.left: parent.left
                     anchors.verticalCenter: parent.verticalCenter
-                    anchors.leftMargin: 7
-                    width: 170
-                    height: 50
+                    anchors.leftMargin: 7 * ShellState.scale
+                    width: 170 * ShellState.scale
+                    height: 50 * ShellState.scale
                     Workspaces {}
                 }
 
                 RowLayout {
                     anchors.verticalCenter: parent.verticalCenter
-                    spacing: 80
+                    spacing: 80 * ShellState.scale
                     Layout.alignment: Qt.AlignHCenter
                     Item {
-                        width: 150
-                        height: 60
+                        width: 150 * ShellState.scale
+                        height: 60 * ShellState.scale
                     }
-                    Date {}
-                    Clock {}
+                    Date {
+                        fontSize: 14 * ShellState.scale
+                    }
+                    Clock {
+                        fontSize: 14 * ShellState.scale
+                    }
                 }
             }
         }
@@ -63,51 +67,51 @@ Variants {
         Rectangle {
             anchors.right: parent.right
             anchors.bottom: parent.bottom
-            anchors.bottomMargin: 4
-            anchors.rightMargin: 10
-            width: 350
-            height: 60
-            radius: Theme.componentRadius
+            anchors.bottomMargin: 4 * ShellState.scale
+            anchors.rightMargin: 10 * ShellState.scale
+            width: 350 * ShellState.scale
+            height: 60 * ShellState.scale
+            radius: Theme.componentRadius * ShellState.scale
             color: Theme.transparency(Colors.md3.background, Config.transparency.surface)
             Item {
                 id: rightGroup
                 anchors.right: parent.right
                 height: parent.height
-                width: 500
+                width: 500 * ShellState.scale
                 RowLayout {
                     anchors.fill: parent
                     spacing: 0
                     Item {
                         // spacer
-                        width: 150
+                        width: 150 * ShellState.scale
                     }
                     Weather {
-                        Layout.preferredWidth: 85
-                        Layout.preferredHeight: 45
+                        Layout.preferredWidth: 85 * ShellState.scale
+                        Layout.preferredHeight: 45 * ShellState.scale
                         visible: Config.visibility.weather
                     }
 
                     WidgetButton {
-                        Layout.preferredWidth: 85
-                        Layout.preferredHeight: 45
+                        Layout.preferredWidth: 85 * ShellState.scale
+                        Layout.preferredHeight: 45 * ShellState.scale
                         command: "top -bn1 | grep 'Cpu(s)' | awk '{printf \"%d%%\\n\", 100 - $8}'"
                         iconName: "\ue322"
                     }
 
                     WidgetButton {
-                        Layout.preferredWidth: 85
-                        Layout.preferredHeight: 45
+                        Layout.preferredWidth: 85 * ShellState.scale
+                        Layout.preferredHeight: 45 * ShellState.scale
                         command: "free | awk '/Mem:/ {printf \"%d%%\\n\", $3/$2 * 100}'"
                         iconName: "\uf7a3"
                     }
 
                     Logo {
-                        Layout.preferredWidth: 30
-                        Layout.preferredHeight: 30
+                        Layout.preferredWidth: 30 * ShellState.scale
+                        Layout.preferredHeight: 30 * ShellState.scale
                     }
                     Item {
                         // spacer
-                        width: 15
+                        width: 15 * ShellState.scale
                     }
                 }
             }
