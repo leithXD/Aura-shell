@@ -41,7 +41,22 @@ Variants {
                 }
             }
             Clock {
-                anchors.centerIn: parent
+                anchors.top: parent.top
+                anchors.horizontalCenter: parent.horizontalCenter
+                anchors.topMargin: dashRect.hovered ? 60 : 30
+                scale: dashRect.hovered ? 2 : 1
+                Behavior on scale {
+                    NumberAnimation {
+                        duration: 200
+                        easing: Easing.OutCubic
+                    }
+                }
+                Behavior on anchors.topMargin {
+                    NumberAnimation {
+                        duration: 200
+                        easing: Easing.OutCubic
+                    }
+                }
             }
         }
 
