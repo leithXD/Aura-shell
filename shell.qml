@@ -3,6 +3,7 @@ import Quickshell.Wayland
 import qs.Core
 import "modules/Bar"
 import "modules/Lock"
+import "modules/Launcher"
 import "modules/Background"
 import "modules/MiddlePellet"
 import "services/Ipc"
@@ -12,6 +13,7 @@ ShellRoot {
     Ipc {}
     Bar {}
     MiddlePellet {}
+    Launcher {}
     LockContext {
         id: lockContext
 
