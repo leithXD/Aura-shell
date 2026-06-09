@@ -38,6 +38,5 @@ Singleton {
     }
 
     component Internal: JsonObject {
-        property string wallpaper: ""
     }
 }

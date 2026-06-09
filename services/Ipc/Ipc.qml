@@ -10,4 +10,10 @@ Item {
             ShellState.locked = !ShellState.locked;
         }
     }
+    IpcHandler {
+        target: "wallpaper"
+        function update() {
+            ShellState.wallpaperUpdate = !ShellState.wallpaperUpdate;
+        }
+    }
 }

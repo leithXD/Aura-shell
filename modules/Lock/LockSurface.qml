@@ -11,11 +11,6 @@ Rectangle {
 
     color: Theme.transparency(Colors.md3.surface)
 
-    Button {
-        text: "Its not working, let me out"
-        onClicked: context.unlocked()
-    }
-
     Label {
         id: clock
         property var date: new Date()
